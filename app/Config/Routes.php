@@ -18,9 +18,11 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('HomeController');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('/');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+$routes->setAutoRoute(true);
+
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -35,7 +37,15 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// route for Index
 $routes->get('/', 'HomeController::index');
+
+//route for Menu Kedai Kopi
+$routes->get('/kedai', 'KedaiController::index');
+
+// route for Detail Kedai Kopi
+$routes->get('kedai/(:any)', 'KedaiController::detailKedai/$1');
 
 /*
  * --------------------------------------------------------------------
