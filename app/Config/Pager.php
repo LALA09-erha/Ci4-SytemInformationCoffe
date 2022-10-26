@@ -25,6 +25,7 @@ class Pager extends BaseConfig
         'default_simple' => 'CodeIgniter\Pager\Views\default_simple',
         'default_head'   => 'CodeIgniter\Pager\Views\default_head',
         'kopi_pagination' => 'CodeIgniter\Pager\Views\kopi_pagination',
+        'coffe_pagination' => 'CodeIgniter\Pager\Views\coffe_pagination',
     ];
 
     /**

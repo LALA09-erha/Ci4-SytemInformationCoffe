@@ -47,6 +47,45 @@ $routes->get('/kedai', 'KedaiController::index');
 // route for Detail Kedai Kopi
 $routes->get('kedai/(:any)', 'KedaiController::detailKedai/$1');
 
+// route for process review
+$routes->post('/prosesreview', 'KedaiController::processReview');
+
+// route for menu contact
+$routes->get('/contact', 'ContactController::index');
+
+// route for process contact
+$routes->post('/prosespesan', 'ContactController::processContact');
+
+//route for search kedai
+$routes->post('/carikedai', 'HomeController::searchKedai');
+
+// route for sign in
+$routes->get('/login', 'SignController::index');
+
+// route for process sign in
+$routes->post('/proseslogin', 'SignController::processLogin');
+
+//route for sign up
+$routes->get('/regist', 'SignController::regist');
+
+// route for process sign up
+$routes->post('/prosesregist', 'SignController::processRegist');
+
+// route for dashboard
+$routes->get('/dashboard', 'AdminController::index');
+
+// route for logout
+$routes->get('/logout', 'SignController::logout');
+
+// route for menu kedai
+$routes->get('/menu', 'AdminController::menuKedai');
+
+//route for reviewmenu
+$routes->get('/review', 'AdminController::reviewMenu');
+
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

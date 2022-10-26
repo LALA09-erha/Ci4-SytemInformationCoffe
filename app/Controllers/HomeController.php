@@ -7,6 +7,8 @@ use App\Models\KedaiModel;
 use App\Models\MenuModel;
 class HomeController extends BaseController
 {
+
+    //menampilkan halaman home
     public function index()
     {
             $db = \Config\Database::connect();
@@ -20,4 +22,19 @@ class HomeController extends BaseController
     }
 
    
+
+    //menampilkan hasil pencarian kedai
+    public function searchKedai()
+    {
+        $kedaiModel = new KedaiModel();
+        $search = $this->request->getVar('search');
+        $kedai = $kedaiModel->like('NAMA_KEDAI', $search)->orLike('DESKRIPSI', $search)->paginate(6, 'kedai');
+        $data = [
+            'kedai' => $kedai,
+            'pager' => $kedaiModel->pager,
+            'title' => 'Home | Coffee Land'
+        ];
+        
+        return view('home/cari-kedai', $data);
+    }
 }

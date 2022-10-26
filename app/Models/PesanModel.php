@@ -7,7 +7,7 @@ Class PesanModel extends Model
 {
     protected $table = 'pesan';
     protected $primaryKey = 'ID_PESAN';
-    protected $allowedFields = ['NAMA_PESAN', 'EMAIL_PESAN', 'PESAN_KEINGINAN'];
+    protected $allowedFields = ['NAMA_PESAN', 'EMAIL_PESAN','SUBJECT' ,'PESAN','TANGGAL'];
     protected $useAutoIncrement  = true;
 }
 
