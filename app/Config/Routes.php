@@ -131,6 +131,12 @@ $routes->get('/add-admin', 'AdminController::addAdmin');
 // route for process add admin
 $routes->post('/prosesaddadmin', 'AdminController::processAddAdmin');
 
+// route for menu Message
+$routes->get('/message', 'AdminController::message');
+
+//route for proses delete message
+$routes->get('/deletemessage' , 'AdminController::deleteMessage');
+
 
 /*
  * --------------------------------------------------------------------

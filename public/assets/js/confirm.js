@@ -21,3 +21,10 @@ function deleteadminconfirm($id){
         window.location.href = "/deleteadmin/" + $id;
     }
 }
+
+function deletemessageconfirm(){
+    $confirm = confirm("Are you sure you want to delete this?");
+    if($confirm == true){
+        window.location.href = "/deletemessage";
+    }
+}

@@ -7,6 +7,8 @@ use App\Models\MenuModel;
 use App\Models\KedaiModel;
 use App\Models\UserModel;
 use App\Models\AdminModel;
+use App\Models\PesanModel;
+
 class AdminController extends BaseController
 {
     //menampilkan halaman contact
@@ -437,6 +439,44 @@ class AdminController extends BaseController
                 return redirect()->to('/admin');
 
             }
+        }
+    }
+
+    // menampilkan halaman message
+    public function message()
+    {
+        if (session()->get('idadmin')) {
+            $pesanModel = new PesanModel();
+            $data = [
+                'title' => 'Data Message | Coffee Land',
+                'pesan' => $pesanModel->findAll(),
+            ];
+            return view('admin/home/pesanToadmin', $data);
+        } else {
+            //jika tidak ada session ,send session flashdata
+            session()->setFlashdata(
+                'pesan',
+                'Anda Harus Login Terlebih Dahulu'
+            );
+            return redirect()->to('/login');
+        }
+    }
+
+    // proses delete all message
+    public function deleteMessage()
+    {
+        if (session()->get('idadmin')) {
+            $pesanModel = new PesanModel();
+            $pesanModel->emptyTable('pesan');
+            session()->setFlashdata('pesan', 'Semua Pesan Berhasil Dihapus');
+            return redirect()->to('/message');
+        } else {
+            //jika tidak ada session ,send session flashdata
+            session()->setFlashdata(
+                'pesan',
+                'Anda Harus Login Terlebih Dahulu'
+            );
+            return redirect()->to('/login');
         }
     }
 }

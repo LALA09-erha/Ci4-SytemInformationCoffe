@@ -89,6 +89,21 @@
                     <span>Review</span></a>
             </li>
 
+                        <!-- Nav Item - Message -->
+
+            <?php if (session()->get('idadmin')): ?>
+                                                          
+                <li class="nav-item
+                <?php if ($title == 'Data Message | Coffee Land') {
+                    echo 'active';
+                } ?>
+
+                ">
+                <a class="nav-link" href="/message">
+                    <i class="fas fa-fw fa-sms"></i>
+                    <span>Message</span></a>
+                </li>
+            <?php endif; ?>
                         <!-- Nav Item - Cafe -->
 
             <?php if (session()->get('idadmin')): ?>
