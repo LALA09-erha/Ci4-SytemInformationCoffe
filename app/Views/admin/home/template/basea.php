@@ -23,7 +23,9 @@
     <link href="<?= base_url(
         'assets/css/sb-admin-2.min.css'
     ) ?>" rel="stylesheet">
-        <link href="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css')?>" rel="stylesheet">
+        <link href="<?= base_url(
+            'assets/vendor/datatables/dataTables.bootstrap4.min.css'
+        ) ?>" rel="stylesheet">
 
 </head>
 
@@ -36,11 +38,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-coffee"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Coffee<sup>Land</sup></div>
+                <div class="sidebar-brand-text mx-3 text-warning">Coffee<sup>Land</sup></div>
             </a>
 
             <!-- Divider -->
@@ -64,7 +66,7 @@
             </div>
 
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Menu -->
             <li class="nav-item
             <?php if ($title == 'Data Menu | Coffee Land') {
                 echo 'active';
@@ -75,7 +77,7 @@
                     <span>Menu</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Review -->
             <li class="nav-item
             <?php if ($title == 'Data Review | Coffee Land') {
                 echo 'active';
@@ -87,8 +89,47 @@
                     <span>Review</span></a>
             </li>
 
+                        <!-- Nav Item - Cafe -->
+
+            <?php if (session()->get('idadmin')): ?>
+                                                          
+                <li class="nav-item
+                <?php if ($title == 'Data Cafes | Coffee Land') {
+                    echo 'active';
+                } ?>
+
+                ">
+                <a class="nav-link" href="/data-cafe">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Cafes</span></a>
+                </li>
+            <?php endif; ?>
+                        <!-- Nav Item - Admin -->
+
+            <?php if (session()->get('idadmin')): ?>
+                                                          
+                <li class="nav-item
+                <?php if ($title == 'Admin | Coffee Land') {
+                    echo 'active';
+                } ?>
+
+                ">
+                <a class="nav-link" href="/admin">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Admin</span></a>
+                </li>
+            <?php endif; ?>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-itme">
+                <?php if (session()->get('pesan')) {
+                    // alert div alert-success
+                    echo '<div class="alert alert-warning" role="alert">';
+                    echo session()->get('pesan');
+                    echo '</div>';
+                } ?>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -112,19 +153,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                   
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -169,7 +198,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
-                                <a class="dropdown-item" href="index.php?hal=logout" data-toggle="modal"
+                                <a class="dropdown-item" href="" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -261,8 +290,12 @@
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
-    <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js')?>"></script>
-    <script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js')?>"></script>
+    <script src="<?= base_url(
+        'assets/vendor/datatables/jquery.dataTables.min.js'
+    ) ?>"></script>
+    <script src="<?= base_url(
+        'assets/vendor/datatables/dataTables.bootstrap4.min.js'
+    ) ?>"></script>
     
     <!-- Page level custom scripts -->
     <script src="<?= base_url('assets/js/demo/datatables-demo.js') ?>"></script>
@@ -272,6 +305,8 @@
     ) ?>"></script>
 
     <!-- Page level custom scripts -->
+    <script src="<?= base_url('assets/js/confirm.js') ?>"></script>
+    <script src="<?= base_url('assets/js/demo/chart-area-demo.js') ?>"></script>
     <script src="<?= base_url('assets/js/demo/chart-area-demo.js') ?>"></script>
     <script src="<?= base_url('assets/js/demo/chart-pie-demo.js') ?>"></script>
     

@@ -1,4 +1,2 @@
-- Edit Dashboard
-- crud menu + foto , change information , add image cafe proses ->single menu, hashing
-- Admin -> Configuration all data
-- Home
+- single menu, hashing
+- home

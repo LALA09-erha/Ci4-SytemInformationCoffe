@@ -7,7 +7,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Review</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Menu</h1>
+    <div class="mb-4"><a onclick="location.href = '/add-admin'" class="btn btn-primary">Add Admin</a></div>
+
+  
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -15,31 +18,21 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Coment</th>                           
-                            <th>Date</th>
-                            <?php if (session()->get('idadmin')): ?>
+                            <th>ID Admin</th>                     
+                            <th>Email Admin</th>                            
                             <th>Action</th>
-                            <?php endif; ?>
                         </tr>
                     </thead>
                     
                     <tbody>
-                            <?php foreach ($pesan as $p): ?>
+                            <?php foreach ($admin as $a): ?>
                         <tr>
                              
-                            <td><?= $p['NAMA_KOMENTATOR'] ?></td>
-                            <td><?= $p['EMAIL_KOMENTATOR'] ?></td>
-                            <td><?= $p['KOMEN'] ?></td>       
-                            <td><?= $p['TANGGAL'] ?></td>
-                            <?php if (session()->get('idadmin')): ?>
+                            <th><?= $a['ID_ADMIN'] ?></th>                                                       
+                            <td><?= $a['email'] ?></td>                            
                             <td>
-                                <a href="/deletereview/<?= $p['ID_KOMEN'] ?>" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                            <?php endif; ?>  
+                                <a onclick="deleteadminconfirm(<?= $a['ID_ADMIN']?>)" class="btn btn-danger">Delete</a>
+                            </td>       
                             
                         </tr>                    
                         <?php endforeach; ?>

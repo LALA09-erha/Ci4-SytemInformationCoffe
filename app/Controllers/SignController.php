@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\KedaiModel;
 use App\Models\UserModel;
+use App\Models\AdminModel;
+
 class SignController extends BaseController
 {
 
@@ -24,7 +26,7 @@ class SignController extends BaseController
     public function processLogin()
     {
         $userModel = new UserModel();
-
+        $adminModel = new AdminModel();
         //get data from form
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
@@ -49,8 +51,26 @@ class SignController extends BaseController
                 return redirect()->to('/login');
             }
         } else {
-            session()->setFlashdata('pesan', 'Login Gagal');
-            return redirect()->to('/login');
+            // admin check
+            $data = $adminModel->where('email', $email)->first();
+            if($data){
+                $pass = $data['PASSWORD'];
+                $verify_pass = password_verify($password, $pass);
+                if ($verify_pass || $password == $pass) {
+                    $ses_data = [
+                        'idadmin' => $data['ID_ADMIN'],
+                        'email' => $data['email'],
+                    ];
+                    session()->set($ses_data);
+                    return redirect()->to('/dashboard');
+                } else {
+                    session()->setFlashdata('pesan', 'Login Gagal');
+                    return redirect()->to('/login');
+                }
+            }else{
+                session()->setFlashdata('pesan', 'Login Gagal');
+                return redirect()->to('/login');
+            }
         }
     }
 

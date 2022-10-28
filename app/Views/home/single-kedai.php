@@ -147,11 +147,20 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
 								<div class="owl-carousel testimonial-carousel">
+                                    <?php
+                                    // jika data menu kosong
+                                    if(empty($menu)){
+                                        echo '<div class="text-center">Data menu kosong</div>';
+                                    }
+                                    ?>
 								<?php foreach ($menu as $m): ?>
                                     <div class="testimonial-item  d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="<?= base_url(
-                                            'assets/img/menu-1.jpg'
-                                        ) ?>" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="
+                                        <?php 
+                                        if($m['FOTO_MENU'] == null){
+                                            echo base_url('assets/img/menu-1.jpg');
+                                        }else{
+                                           echo base_url('imgmenu/'.$m['FOTO_MENU']);} ?>" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span><?= $m[
@@ -173,7 +182,14 @@
                         </div>
 
                         <div id="tab-2" class="tab-pane fade show p-0">
-
+                            <?php 
+                             // jika tidak ada review
+                                if (empty($komen)) {
+                                    echo '<div class="text-center">
+                                    <h1 class="mb-5">Belum ada review</h1>
+                                    </div>';
+                                }
+                             ?>
 							<div class="owl-carousel testimonial-carousel">
 							<?php foreach ($komen as $ko): ?>
 

@@ -8,7 +8,10 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Menu</h1>
-    <div class="mb-4"><a href="" class="btn btn-primary">Add Menu</a></div>
+
+    <?php if(!session()->get('idadmin')) :?>
+    <div class="mb-4"><a onclick="location.href = '/add-menu'" class="btn btn-primary">Add Menu</a></div>
+    <?php endif;?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -16,7 +19,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <?php if(session()->get('idadmin')) :?>
+                                <th>ID Kedai</th>                            
+                            <?php endif; ?>
+                            <th>Image</th>
                             <th>Menu</th>
+
                             <th>Category</th>
                             <th>Price</th>                           
                             <th>Action</th>                           
@@ -27,6 +35,10 @@
                             <?php foreach ($menu as $m): ?>
                         <tr>
                              
+                            <?php if(session()->get('idadmin')) :?>
+                                <th><?= $m['ID_KEDAI'] ?></th>                            
+                            <?php endif; ?>
+                            <td><img src="imgmenu/<?= $m['FOTO_MENU'] ?>" style="width: 100px;" alt=""></td>
                             <td><?= $m['NAMA_MENU'] ?></td>
                             <td><?php if ($m['ID_KATEGORI'] == 1) {
                                 echo 'Food';
@@ -34,7 +46,13 @@
                                 echo 'Drink';
                             } ?></td>
                             <td><?= $m['HARGA'] ?></td>       
-                            <td><?= $m['ID_MENU'] ?></td>       
+                            <td>
+                            <?php if(!session()->get('idadmin')) :?>
+
+                                <a href="/editmenu/<?= $m['ID_MENU']?>" class="btn btn-success">Edit</a>
+                            <?php endif; ?>
+                                <a onclick="deleteconfirm(<?= $m['ID_MENU']?>)" class="btn btn-danger">Delete</a>
+                            </td>       
                             
                         </tr>                    
                         <?php endforeach; ?>

@@ -83,7 +83,53 @@ $routes->get('/menu', 'AdminController::menuKedai');
 //route for reviewmenu
 $routes->get('/review', 'AdminController::reviewMenu');
 
+//route for change info
+$routes->get('/info', 'AdminController::changeInfo');
 
+//route for process change info
+$routes->post('/prosesinfo', 'AdminController::processInfo');
+
+//route for image upload
+
+$routes->post('/imagecafe', 'AdminController::uploadImage');
+
+//route for add menu
+$routes->get('/add-menu', 'MenuController::index');
+
+//route for process add menu
+$routes->post('/prosesaddmenu', 'MenuController::processAddMenu');
+
+//route for edit menu
+$routes->get('/editmenu/(:any)', 'MenuController::editMenu/$1');
+
+//route for process edit menu
+$routes->post('/proseseditmenu', 'MenuController::processEditMenu');
+
+//route for delete menu
+$routes->get('/hapusmenu/(:any)', 'MenuController::deleteMenu/$1');
+
+
+// ADMIN ROUTE FOR KEDAI
+// route for cafes
+$routes->get('/data-cafe', 'AdminController::datacafe');
+
+//route for delete deletereview
+$routes->get('/deletereview/(:any)', 'AdminController::deleteReview/$1');
+
+// route for delete cafe
+$routes->get('/deletecafe/(:any)', 'AdminController::deleteCafe/$1');
+
+// route for admin menu
+$routes->get('/admin', 'AdminController::adminMenu');
+
+// route for delete admin
+$routes->get('/deleteadmin/(:any)', 'AdminController::deleteAdmin/$1');
+
+// route for add admin
+$routes->get('/add-admin', 'AdminController::addAdmin');
+
+// route for process add admin
+$routes->post('/prosesaddadmin', 'AdminController::processAddAdmin');
 
 
 /*

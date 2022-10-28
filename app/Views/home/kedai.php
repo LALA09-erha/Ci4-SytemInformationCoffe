@@ -41,7 +41,14 @@
                     <div data-wow-delay="0.1s">
                         <div class="service-item rounded pt-3">
                             <div class="p-3">
-                                <img class="flex-shrink-0 img-fluid rounded" src="<?= base_url('assets/img/menu-5.jpg') ?>" alt="" style="width: 100%;">
+                                <img class="flex-shrink-0 img-fluid rounded" src="<?php
+                                if($k['FOTO_KEDAI'] == null){
+                                  echo base_url('assets/img/menu-5.jpg');
+                                }else{
+                                  echo base_url('imgcafe/'.$k['FOTO_KEDAI']);
+                                }
+                                  ?>" alt="" style="width: 100%;">
+                                  
                                 <h5><?= $k['NAMA_KEDAI'] ?></h5>
                                 <p class="text-success">
                                   <!-- Show Information about open / closed  -->
