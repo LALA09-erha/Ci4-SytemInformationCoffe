@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 08:06 AM
+-- Generation Time: Oct 28, 2022 at 10:35 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kopi`
+-- Database: `kedaikopi`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `ID_ADMIN` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `USERNAME` char(100) DEFAULT NULL,
+  `ID_ADMIN` int(11) NOT NULL,
+  `email` char(100) DEFAULT NULL,
   `PASSWORD` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -37,17 +37,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`ID_ADMIN`, `USERNAME`, `PASSWORD`) VALUES
-(1, 'caca', '123'),
-(2, 'lala', '1234'),
-(3, 'lili', '12345'),
-(4, 'lele', '123456'),
-(5, 'rafa', '4321'),
-(6, 'rafi', '321'),
-(7, 'rere', '21'),
-(8, 'reza', '1'),
-(9, 'rara', '987'),
-(10, 'rani', '98');
+INSERT INTO `admin` (`ID_ADMIN`, `email`, `PASSWORD`) VALUES
+(1, 'caca@gmail.com', '123'),
+(11, 'fikri_erha@gmail.com', '$2y$10$Pxoe/DXOlxD2YMVCYDOabOAXt2tL3LuPI57ZmYA7zVdrkHVHTbV26');
 
 -- --------------------------------------------------------
 
@@ -56,7 +48,7 @@ INSERT INTO `admin` (`ID_ADMIN`, `USERNAME`, `PASSWORD`) VALUES
 --
 
 CREATE TABLE `kategori_menu` (
-  `ID_KATEGORI` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ID_KATEGORI` int(11) NOT NULL,
   `NAMA_KATEGORI` char(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -75,7 +67,7 @@ INSERT INTO `kategori_menu` (`ID_KATEGORI`, `NAMA_KATEGORI`) VALUES
 --
 
 CREATE TABLE `kedai` (
-  `ID_KEDAI` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ID_KEDAI` int(11) NOT NULL,
   `NAMA_KEDAI` char(255) DEFAULT NULL,
   `DESKRIPSI` varchar(255) DEFAULT NULL,
   `ALAMAT` varchar(255) NOT NULL,
@@ -91,8 +83,7 @@ CREATE TABLE `kedai` (
 --
 
 INSERT INTO `kedai` (`ID_KEDAI`, `NAMA_KEDAI`, `DESKRIPSI`, `ALAMAT`, `JAM_TUTUP`, `JAM_BUKA`, `TELP`, `slug`, `FOTO_KEDAI`) VALUES
-(1, 'Basecamp', 'Cafe untuk umum', 'Manggisan, Burneh, Bangkalan Regency, East Java 69121', '00:00:00', '00:00:00', ' 0823-3757-5604', 'basecamp', 'inifoto'),
-(2, 'Kandang Kopi Bangkalan', 'Cafe untuk umum', 'Jl. RE. Martadinata No.07', '13:25:58', '00:00:00', '0855-4900-0031', 'kandang-kopi-bangkalan', 'inifotokedai');
+(2, 'Kandang Kopi Bangkalan', 'Cafe untuk umum', 'Jl. RE. Martadinata No.07', '13:25:58', '00:00:00', '0855-4900-0031', 'kandang-kopi-bangkalan', '5 Screenshot (22).png');
 
 -- --------------------------------------------------------
 
@@ -101,7 +92,7 @@ INSERT INTO `kedai` (`ID_KEDAI`, `NAMA_KEDAI`, `DESKRIPSI`, `ALAMAT`, `JAM_TUTUP
 --
 
 CREATE TABLE `komen` (
-  `ID_KOMEN` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ID_KOMEN` int(11) NOT NULL,
   `ID_KEDAI` int(11) DEFAULT NULL,
   `NAMA_KOMENTATOR` char(100) DEFAULT NULL,
   `EMAIL_KOMENTATOR` char(100) DEFAULT NULL,
@@ -114,16 +105,11 @@ CREATE TABLE `komen` (
 --
 
 INSERT INTO `komen` (`ID_KOMEN`, `ID_KEDAI`, `NAMA_KOMENTATOR`, `EMAIL_KOMENTATOR`, `KOMEN`, `TANGGAL`) VALUES
-(1, 1, 'lala', 'lala@gmail.com', 'hahahaha', '2022-10-23 21:03:51'),
-(2, 2, 'jaja', 'jaja@gmail.com', 'mantap', '2022-10-23 21:03:51'),
-(3, 1, 'PAPA', 'papa@gmail.com', 'mantao', '2022-10-23 21:26:30'),
 (4, 2, 'reno', 'reno@gmail.com', 'asek', '2022-10-25 05:51:03'),
-(5, 1, 'rozak', 'rozak@gmail.com', 'mantafff', '2022-10-25 05:54:10'),
 (6, 2, 'rozy', 'rozy@gmail.com', 'jos', '2022-10-25 05:54:10'),
 (7, 2, 'riziq', 'riziq@gmail.com', 'halal', '2022-10-25 05:54:10'),
-(8, 1, 'bahar', 'bahar@gmail.com', 'halal', '2022-10-25 05:54:10'),
-(9, 1, 'smith', 'smith@gmail.com', 'barokah', '2022-10-25 05:54:10'),
-(10, 2, 'shihab', 'shihab@gmail.com', 'auenakkk', '2022-10-25 05:54:54');
+(10, 2, 'shihab', 'shihab@gmail.com', 'auenakkk', '2022-10-25 05:54:54'),
+(12, 2, 'Caca maharani', 'jajan@gmail.com', 'Mantap', '2022-10-25 04:14:33');
 
 -- --------------------------------------------------------
 
@@ -132,7 +118,7 @@ INSERT INTO `komen` (`ID_KOMEN`, `ID_KEDAI`, `NAMA_KOMENTATOR`, `EMAIL_KOMENTATO
 --
 
 CREATE TABLE `menu` (
-  `ID_MENU` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ID_MENU` int(11) NOT NULL,
   `ID_KEDAI` int(11) DEFAULT NULL,
   `ID_KATEGORI` int(11) DEFAULT NULL,
   `NAMA_MENU` char(255) DEFAULT NULL,
@@ -145,15 +131,11 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`ID_MENU`, `ID_KEDAI`, `ID_KATEGORI`, `NAMA_MENU`, `HARGA`, `FOTO_MENU`) VALUES
-(1, 1, 1, 'Bakso', '10.000', ''),
-(2, 2, 2, 'Es Teh', '2.000', ''),
-(3, 1, 1, 'Nasi Goreng', '10.000', 'da'),
-(4, 1, 1, 'Bakmie', '25.000', ''),
-(5, 2, 2, 'Coffe beer', '10.000', ''),
-(7, 1, 2, 'Black Coffe', '5.000', ''),
-(8, 2, 2, 'Seafood', '25.000', ''),
-(9, 1, 2, 'Bintang', '30.000', ''),
-(10, 2, 2, 'Soda', '10.000', '');
+(2, 2, 2, 'Es Teh', '2.000', '2 Screenshot (22).png'),
+(5, 2, 2, 'Coffe beer', '10.000', '1 1666905274 Screenshot (21).png'),
+(8, 2, 2, 'Seafood', '25.000', '1 1666905274 Screenshot (21).png'),
+(10, 2, 2, 'Soda', '10.000', '1 1666905274 Screenshot (21).png'),
+(16, 2, 1, 'Bakso', '10000', '2 Screenshot (22).png');
 
 -- --------------------------------------------------------
 
@@ -162,51 +144,51 @@ INSERT INTO `menu` (`ID_MENU`, `ID_KEDAI`, `ID_KATEGORI`, `NAMA_MENU`, `HARGA`, 
 --
 
 CREATE TABLE `pesan` (
-  `ID_PESAN` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ID_PESAN` int(11) NOT NULL,
   `NAMA_PESAN` char(100) DEFAULT NULL,
   `EMAIL_PESAN` char(100) DEFAULT NULL,
-  `PESAN_KEINGINAN` varchar(255) DEFAULT NULL
+  `SUBJECT` char(100) NOT NULL,
+  `PESAN` varchar(255) DEFAULT NULL,
+  `TANGGAL` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`ID_PESAN`, `NAMA_PESAN`, `EMAIL_PESAN`, `PESAN_KEINGINAN`) VALUES
-(1, 'Molly', 'Molyy@gmail.com', 'Nasi Goreng'),
-(2, 'Habib', 'Habib@gmail.com', 'Black Coffe'),
-(3, 'Bahar', 'Bahar@gmail.com', 'Nasi Goreng'),
-(4, 'Bin', 'Bin@gmail.com', 'Seafood'),
-(5, 'Smith', 'Smithh@gmail.com', 'Spagheti'),
-(6, 'rizieq', 'rizieq@gmail.com', 'Black Coffe'),
-(7, 'Shihab', 'Shihab@gmail.com', 'Soda'),
-(8, 'Billy', 'Billy@gmail.com', 'Nasi Goreng'),
-(9, 'Morgen', 'Morgen@gmail.com', 'Seafood'),
-(10, 'Simbolon', 'Simbolon@gmail.com', 'Coffe');
+INSERT INTO `pesan` (`ID_PESAN`, `NAMA_PESAN`, `EMAIL_PESAN`, `SUBJECT`, `PESAN`, `TANGGAL`) VALUES
+(1, 'Molly', 'Molyy@gmail.com', '', 'Nasi Goreng', '2022-10-26 00:00:00'),
+(2, 'Habib', 'Habib@gmail.com', '', 'Black Coffe', '2022-10-26 00:00:00'),
+(3, 'Bahar', 'Bahar@gmail.com', '', 'Nasi Goreng', '2022-10-26 00:00:00'),
+(4, 'Bin', 'Bin@gmail.com', '', 'Seafood', '2022-10-26 00:00:00'),
+(5, 'Smith', 'Smithh@gmail.com', '', 'Spagheti', '2022-10-26 00:00:00'),
+(6, 'rizieq', 'rizieq@gmail.com', '', 'Black Coffe', '2022-10-26 00:00:00'),
+(7, 'Shihab', 'Shihab@gmail.com', '', 'Soda', '2022-10-26 00:00:00'),
+(8, 'Billy', 'Billy@gmail.com', '', 'Nasi Goreng', '2022-10-26 00:00:00'),
+(9, 'Morgen', 'Morgen@gmail.com', '', 'Seafood', '2022-10-26 00:00:00'),
+(10, 'Simbolon', 'Simbolon@gmail.com', '', 'Coffe', '2022-10-26 00:00:00'),
+(11, 'Caca maharani', 'erhafikri@gmail.com', 'Asking Question', 'apa hayo\r\n', '2022-10-26 00:00:00'),
+(12, 'Caca maharani', 'fikri_erha@gmail.com', 'Partnership With Coffee Land', 'Halo\r\n', '2022-10-26 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `rating` (
-  `ID_RATING` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `ID_KEDAI` int(11) DEFAULT NULL,
-  `NAMA_PENGIRIM` char(100) DEFAULT NULL,
-  `NILAI_RATING` int(11) DEFAULT NULL,
-  `EMAIL_RATING` char(100) DEFAULT NULL
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `id_kedai` int(11) NOT NULL,
+  `email` char(100) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `rating`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `rating` (`ID_RATING`, `ID_KEDAI`, `NAMA_PENGIRIM`, `NILAI_RATING`, `EMAIL_RATING`) VALUES
-(1, 1, 'Habib', 5, 'Habib@gmail.com'),
-(2, 2, 'Bahar', 5, 'Bahar@gmail.com'),
-(3, 1, 'Bin', 3, 'Bin@gmail.com'),
-(4, 2, 'smith', 5, 'smith@gmail.com');
+INSERT INTO `user` (`id_user`, `id_kedai`, `email`, `password`) VALUES
+(2, 2, 'Kandang@gmail.com', '123');
 
 --
 -- Indexes for dumped tables
@@ -216,28 +198,28 @@ INSERT INTO `rating` (`ID_RATING`, `ID_KEDAI`, `NAMA_PENGIRIM`, `NILAI_RATING`, 
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  
+  ADD PRIMARY KEY (`ID_ADMIN`),
   ADD UNIQUE KEY `ADMIN_PK` (`ID_ADMIN`);
 
 --
 -- Indexes for table `kategori_menu`
 --
 ALTER TABLE `kategori_menu`
-  
+  ADD PRIMARY KEY (`ID_KATEGORI`),
   ADD UNIQUE KEY `KATEGORI_MENU_PK` (`ID_KATEGORI`);
 
 --
 -- Indexes for table `kedai`
 --
 ALTER TABLE `kedai`
-  
+  ADD PRIMARY KEY (`ID_KEDAI`),
   ADD UNIQUE KEY `KEDAI_PK` (`ID_KEDAI`);
 
 --
 -- Indexes for table `komen`
 --
 ALTER TABLE `komen`
-  
+  ADD PRIMARY KEY (`ID_KOMEN`),
   ADD UNIQUE KEY `KOMEN_PK` (`ID_KOMEN`),
   ADD KEY `RELATIONSHIP_3_FK` (`ID_KEDAI`);
 
@@ -245,7 +227,7 @@ ALTER TABLE `komen`
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
-  
+  ADD PRIMARY KEY (`ID_MENU`),
   ADD UNIQUE KEY `MENU_PK` (`ID_MENU`),
   ADD KEY `RELATIONSHIP_1_FK` (`ID_KEDAI`),
   ADD KEY `RELATIONSHIP_2_FK` (`ID_KATEGORI`);
@@ -254,16 +236,60 @@ ALTER TABLE `menu`
 -- Indexes for table `pesan`
 --
 ALTER TABLE `pesan`
-  
+  ADD PRIMARY KEY (`ID_PESAN`),
   ADD UNIQUE KEY `PESAN_PK` (`ID_PESAN`);
 
 --
--- Indexes for table `rating`
+-- Indexes for table `user`
 --
-ALTER TABLE `rating`
-  
-  ADD UNIQUE KEY `RATING_PK` (`ID_RATING`),
-  ADD KEY `RELATIONSHIP_4_FK` (`ID_KEDAI`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `ID_ADMIN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `kategori_menu`
+--
+ALTER TABLE `kategori_menu`
+  MODIFY `ID_KATEGORI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `kedai`
+--
+ALTER TABLE `kedai`
+  MODIFY `ID_KEDAI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `komen`
+--
+ALTER TABLE `komen`
+  MODIFY `ID_KOMEN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `pesan`
+--
+ALTER TABLE `pesan`
+  MODIFY `ID_PESAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -281,12 +307,6 @@ ALTER TABLE `komen`
 ALTER TABLE `menu`
   ADD CONSTRAINT `FK_MENU_RELATIONS_KATEGORI` FOREIGN KEY (`ID_KATEGORI`) REFERENCES `kategori_menu` (`ID_KATEGORI`),
   ADD CONSTRAINT `FK_MENU_RELATIONS_KEDAI` FOREIGN KEY (`ID_KEDAI`) REFERENCES `kedai` (`ID_KEDAI`);
-
---
--- Constraints for table `rating`
---
-ALTER TABLE `rating`
-  ADD CONSTRAINT `FK_RATING_RELATIONS_KEDAI` FOREIGN KEY (`ID_KEDAI`) REFERENCES `kedai` (`ID_KEDAI`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
