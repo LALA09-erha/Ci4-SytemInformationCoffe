@@ -85,6 +85,17 @@
                                         <h6 class="text-uppercase mb-0"><?= $kedai[
                                             'TELP'
                                         ] ?></h6>
+                                        <?php 
+                                        // merubah format nomor telepon menjadi 62xxxx
+                                        $nohp = $kedai['TELP'];                                        
+                                        $nohp = str_replace("-","",$nohp);
+                                        //mengubah nomor 0 di depan menjadi 62
+                                        if(substr($nohp, 0, 1)=='0'){
+                                            $nohp = '62'.substr($nohp, 1);
+                                        }
+                                        ?>
+                                        <!-- https://wa.me/6281281888636 -->
+                                        <a href="https://wa.me/<?= $nohp ?>">Chat Cafe Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +107,7 @@
                                         <h6 class="text-uppercase mb-0"><?= $kedai[
                                             'TELP'
                                         ] ?></h6>
+                                        <a href="https://wa.link/jfo9dq">Chat Driver Now</a>
                                     </div>
                                 </div>
                             </div>

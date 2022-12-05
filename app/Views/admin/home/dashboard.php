@@ -104,7 +104,7 @@
     <?php endif; ?>
     
 </div>
-
+        
 <!-- Content Row -->
 
 <div class="row">
