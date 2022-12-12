@@ -119,6 +119,14 @@
         </div>
         <!-- About End -->
 
+           <!-- Iklan Start -->
+           <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container">
+                    <a href="https://www.instagram.com/fikri_erha/"><img src="https://cdn-image.hipwee.com/wp-content/uploads/2020/04/hipwee-Desain-tanpa-judul-9-2.png" style="display: block;margin-left: auto;margin-right: auto;width: 50%;" alt="HTML tutorial" style="width:1000px;height:250px;"></a>
+                </div>
+            </div>
+            <!-- Iklan End -->
+
 
         <!-- Menu Start -->
         <div class="container-xxl py-5">
@@ -464,13 +472,20 @@
         </div>
         <!-- Menu End -->
 
+            <!-- Iklan Start -->
+            <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container">
+                    <a href="https://www.instagram.com/fikri_erha/"><img src="https://cdn-image.hipwee.com/wp-content/uploads/2020/04/hipwee-Desain-tanpa-judul-9-2.png" style="display: block;margin-left: auto;margin-right: auto;width: 50%;" alt="HTML tutorial" style="width:1000px;height:250px;"></a>
+                </div>
+            </div>
+            <!-- Iklan End -->
 
         <!-- Reservation Start -->
         <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="row g-0">
                 <div class="col-md-6">
                     <div class="video">
-                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/watch?v=lAd3LYIZMjs" data-bs-target="#videoModal">
                             <span></span>
                         </button>
                     </div>
@@ -535,8 +550,7 @@
                     <div class="modal-body">
                         <!-- 16:9 aspect ratio -->
                         <div class="ratio ratio-16x9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                                allow="autoplay"></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbcXJ7rJAQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
